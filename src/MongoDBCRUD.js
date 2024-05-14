@@ -27,7 +27,7 @@ const Book = mongoose.model("Book", {
 });
 
 const app = express();
-app,use(bodyParser.json());
+app.use(bodyParser.json());
 
 
 app.post("/books", async (req, res)=>{
@@ -62,8 +62,8 @@ app.get("/books", async (req, res) => {
 
 app.get("/books/:id", async (req, res) => {
     try {
-        const books = await Book.findOne({id:req.params.id});
-        res.send(books);
+        const book = await Book.findOne({id:req.params.id});
+        res.send(book);
     } catch (error) {
         res.status(500).send(error);
     }
